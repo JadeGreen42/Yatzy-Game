@@ -11,7 +11,8 @@ def run_game():
         cb = SingleRound()
         #print("cb: ", cb)
         for k in slots:
-            print(k,":", slots[k])
+            if k not in used:
+                print(k,":", slots[k])
         while True:
             choice = int(input("Pick slot: "))
             if choice in slots:
@@ -24,7 +25,8 @@ def run_game():
             total = total + 35
         print("Your score: ", b)
         total = total + b
-        del slots[choice]
+        used.add(choice)
+        # del slots[choice]
         print("Total score:", total)
         print("Mini score:", minisum)
-
+    return total
